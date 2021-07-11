@@ -1,15 +1,13 @@
 <template>
   <TabBar>
-    <TabBarItem>
+    <TabBarItem path="/home">
       <img slot="item-icon" src="~assets/img/tabbar/music-circle.svg">
       <img slot="item-icon-active" src="~assets/img/tabbar/music-circle-active.svg">
       <span slot="item-text">音乐圈</span>
     </TabBarItem>
-    <TabBarItem>
-      <img slot="item-icon" src="~assets/img/tabbar/music-note.svg">
-      <img slot="item-icon-active" src="~assets/img/tabbar/music-note-active.svg">
-    </TabBarItem>
-    <TabBarItem>
+    <div class="music-note"></div>
+<!--    <img src="~assets/img/tabbar/music-note.svg">-->
+    <TabBarItem path="/profile">
       <img slot="item-icon" src="~assets/img/tabbar/profile.svg">
       <img slot="item-icon-active" src="~assets/img/tabbar/profile-active.svg">
       <span slot="item-text">我的</span>
@@ -28,5 +26,23 @@ export default {
 </script>
 
 <style scoped>
+.music-note {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background-image: url("~assets/img/tabbar/music-note.svg");
+  background-repeat: no-repeat;
+  background-size: 45%;
+  background-position: center;
 
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+
+  background-color: #ffffff;
+
+  box-shadow: 0 -15px 20px -10px rgba(100,100,100,0.11);
+}
 </style>

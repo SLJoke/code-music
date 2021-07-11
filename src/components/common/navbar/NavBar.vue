@@ -1,8 +1,8 @@
 <template>
   <div class="nav-bar">
-    <slot name="left"></slot>
-    <slot name="center"></slot>
-    <slot name="right"></slot>
+    <div class="left"><slot name="left"></slot></div>
+    <div class="center"><slot name="center"></slot></div>
+    <div class="right"><slot name="right"></slot></div>
   </div>
 </template>
 
@@ -13,5 +13,25 @@ export default {
 </script>
 
 <style scoped>
+.nav-bar {
+  display: flex;
+  height: 44px;
+  line-height: 44px;
+  font-size: 16px;
+}
 
+.left,.center {
+  flex: auto;
+  text-align: center;
+}
+
+.right {
+  width: 60px;
+  text-align: center;
+}
+
+.left div {
+  display: flex;
+  justify-content: space-around;
+}
 </style>
