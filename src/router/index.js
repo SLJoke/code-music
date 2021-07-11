@@ -5,10 +5,10 @@ Vue.use(VueRouter)
 
 const Home = () => import('pages/home/Home')
 const Profile = () => import('pages/profile/Profile')
-const Recommend = () => import('pages/home/recommend/Recommend')
-const List = () => import('pages/home/list/List')
-const SongSheet = () => import('pages/home/songsheet/SongSheet')
-const Artist = () => import('pages/home/artist/Artist')
+const Recommend = () => import('pages/recommend/Recommend')
+const List = () => import('pages/list/List')
+const SongSheet = () => import('pages/songsheet/SongSheet')
+const Artist = () => import('pages/artist/Artist')
 
 const routes = [
     {
