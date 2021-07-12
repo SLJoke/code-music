@@ -1,6 +1,6 @@
 <template>
   <div class="artist">
-    <h2>艺人</h2>
+    <h2>艺..</h2>
   </div>
 </template>
 

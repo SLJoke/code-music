@@ -1,6 +1,6 @@
 <template>
   <div class="sheet">
-    <h2>歌单</h2>
+    <h2>歌单..</h2>
   </div>
 </template>
 

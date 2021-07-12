@@ -1,6 +1,6 @@
 <template>
   <div class="list">
-    <h2>榜单</h2>
+    <h2>榜单..</h2>
   </div>
 </template>
 
