@@ -27,12 +27,12 @@ export default {
 
 <style scoped>
 .music-note {
-  width: 90px;
-  height: 90px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   background-image: url("~assets/img/tabbar/music-note.svg");
   background-repeat: no-repeat;
-  background-size: 45%;
+  background-size: 50%;
   background-position: center;
 
   position: absolute;
