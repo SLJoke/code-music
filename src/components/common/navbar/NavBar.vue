@@ -15,18 +15,19 @@ export default {
 <style scoped>
 .nav-bar {
   display: flex;
+  justify-content: space-around;
   height: 44px;
   line-height: 44px;
   font-size: 16px;
+
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
 }
 
-.left,.center {
+.left,.center,.right {
   flex: auto;
-  text-align: center;
-}
-
-.right {
-  width: 60px;
   text-align: center;
 }
 

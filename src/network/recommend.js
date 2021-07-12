@@ -8,3 +8,12 @@ export function getHomeBanner() {
         }
     })
 }
+
+export function getHotMusic() {
+    return request({
+        url: '/personalized/newsong',
+        params: {
+            limit: 10
+        }
+    })
+}

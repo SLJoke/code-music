@@ -227,22 +227,22 @@ export default {
   justify-content: center;
   position: absolute;
   width: 100%;
-  bottom: 8px;
+  bottom: 12%;
 }
 
 .indi-item {
   box-sizing: border-box;
   width: 8px;
-  height: 8px;
-  border-radius: 4px;
-  background-color: #fff;
+  height: 3px;
+  border-radius: 20%;
+  background-color: rgb(150,200,200,.3);
   line-height: 8px;
   text-align: center;
   font-size: 12px;
-  margin: 0 5px;
+  margin: 0 3px;
 }
 
 .indi-item.active {
-  background-color: rgba(212,62,46,1.0);
+  background-color: rgb(255, 255, 255);
 }
 </style>
