@@ -1,5 +1,7 @@
 <template>
-  <h2>歌单</h2>
+  <div class="sheet">
+    <h2>歌单</h2>
+  </div>
 </template>
 
 <script>
@@ -9,5 +11,13 @@ export default {
 </script>
 
 <style scoped>
+.sheet {
+  overflow-y: scroll;
 
+  position: absolute;
+  top: 44px;
+  bottom: 60px;
+  left: 0;
+  right: 0;
+}
 </style>
