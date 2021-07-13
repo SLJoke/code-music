@@ -1,0 +1,85 @@
+<template>
+  <div class="">
+    <div class="recommend-hot-bar">
+      <img src="~assets/img/recommend/hot.svg" @load="imgLoad"/>
+      <span>{{ title }}</span>
+    </div>
+    <div class="recommend-hot-content">
+      <div class="hot-item"
+           v-for="item in hots"
+           :key="item.id">
+        <img :src="item.picUrl" @load="imgLoad">
+        <span>{{ item.name }}</span>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'RecHotItem',
+  props: {
+    hots: {
+      type: Array,
+      default() {
+        return []
+      }
+    },
+    title: {
+      type: String,
+      default: ''
+    }
+  },
+  methods: {
+    imgLoad() {
+      this.$bus.$emit('hotItemImgLoad')
+    }
+  }
+}
+</script>
+
+<style>
+.recommend-hot-bar {
+  height: 30px;
+  line-height: 30px;
+  font-size: 15px;
+  display: flex;
+  padding-left: 8px;
+}
+
+.recommend-hot-bar img {
+  height: 22px;
+}
+
+.recommend-hot-content {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.hot-item {
+  flex: 0 1 33%;
+  height: 110px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hot-item img {
+  width: 80px;
+  border-radius: 10%;
+  box-shadow: 0 0 3px rgba(100, 100, 100, .9);
+}
+
+.hot-item span {
+  font-size: 14px;
+  width: 60px;
+  height: 18px;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-top: 5px;
+}
+</style>

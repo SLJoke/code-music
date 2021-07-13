@@ -13,7 +13,16 @@ export function getHotMusic() {
     return request({
         url: '/personalized/newsong',
         params: {
-            limit: 10
+            limit: 7
+        }
+    })
+}
+
+export function getHotSongSheet() {
+    return request({
+        url: '/personalized',
+        params: {
+            limit: 7
         }
     })
 }

@@ -166,10 +166,9 @@ export default {
       this.setTransform(moveDistance);
     },
 
-    touchEnd: function (e) {
+    touchEnd: function () {
       // 1.获取移动的距离
       let currentMove = Math.abs(this.distance);
-      console.log(e)
       // 2.判断最终的距离
       if (this.distance === 0) {
         return
