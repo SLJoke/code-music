@@ -1,13 +1,15 @@
 <template>
   <div class="">
     <div class="recommend-hot-bar">
-      <img src="~assets/img/recommend/hot.svg" @load="imgLoad"/>
+      <img src="~assets/img/recommend/hot.svg"/>
       <span>{{ title }}</span>
     </div>
     <div class="recommend-hot-content">
       <div class="hot-item"
            v-for="item in hots"
-           :key="item.id">
+           :key="item.id"
+           @click="songClick(item.id)"
+      >
         <img :src="item.picUrl" @load="imgLoad">
         <span>{{ item.name }}</span>
       </div>
@@ -33,6 +35,9 @@ export default {
   methods: {
     imgLoad() {
       this.$bus.$emit('hotItemImgLoad')
+    },
+    songClick(id) {
+      this.$emit('songid',id)
     }
   }
 }

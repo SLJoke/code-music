@@ -9,6 +9,7 @@ const Recommend = () => import('pages/recommend/Recommend')
 const List = () => import('pages/list/List')
 const SongSheet = () => import('pages/songsheet/SongSheet')
 const Artist = () => import('pages/artist/Artist')
+const MusicPlayer = () => import('pages/musicplayer/MusicPlayer')
 
 const routes = [
     {
@@ -44,12 +45,16 @@ const routes = [
     {
         path: '/profile',
         component: Profile
+    },
+    {
+        path: '/musicplayer',
+        component: MusicPlayer
     }
 ]
 
 const router = new VueRouter({
     routes,
-    mode: 'hash'
+    mode: 'history'
 })
 
 export default router

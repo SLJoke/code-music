@@ -1,9 +1,9 @@
 <template>
   <scroll class="recommend" ref="scroll">
-    <rec-swiper :banners="banners"/>
+    <rec-swiper :banners="banners" @swiperid="getMusic"/>
     <rec-view/>
     <rec-hot>
-      <rec-hot-item :hots="recommendMusic" :title="'热门歌曲'"></rec-hot-item>
+      <rec-hot-item :hots="recommendMusic" :title="'热门歌曲'" @songid="getMusic"></rec-hot-item>
       <rec-hot-item :hots="hotSongSheet" :title="'热门榜单'"></rec-hot-item>
     </rec-hot>
   </scroll>
@@ -17,22 +17,27 @@ import RecView from "./childComps/RecView";
 import RecHot from "./childComps/RecHot";
 import RecHotItem from "./childComps/RecHotItem";
 
-import {getHomeBanner, getHotMusic, getHotSongSheet} from "network/recommend";
+import {
+  getHomeBanner,
+  getHotMusic,
+  getHotSongSheet,
+} from "network/recommend";
 
 export default {
   name: "Recommend",
-  components: {RecHotItem, Scroll, RecSwiper, RecView, RecHot},
+  components: {Scroll, RecHotItem, RecSwiper, RecView, RecHot},
   data() {
     return {
       banners: [],
       recommendMusic: [],
-      hotSongSheet: []
+      hotSongSheet: [],
+      songUrl: ''
     };
   },
   created() {
     this.getHomeBanner();
     this.getHotMusic();
-    this.getHotSongSheet()
+    this.getHotSongSheet();
   },
   mounted() {
     this.$bus.$on('hotItemImgLoad',() => {
@@ -44,22 +49,14 @@ export default {
   },
   methods: {
     getHomeBanner() {
-      getHomeBanner().then(
-          (res) => {
+      getHomeBanner().then(res => {
             this.banners = res.banners;
-          },
-          (err) => {
-            console.log(err);
           }
       );
     },
     getHotMusic() {
-      getHotMusic().then(
-          (res) => {
+      getHotMusic().then(res => {
             this.recommendMusic = res.result;
-          },
-          (err) => {
-            console.log(err);
           }
       );
     },
@@ -67,6 +64,15 @@ export default {
       getHotSongSheet().then(res => {
         this.hotSongSheet = res.result
       })
+    },
+    //获取子组件传过来的歌曲id后再发送网络请求，请求歌曲的url
+    getMusic(songId) {
+      this.$router.push({
+        path: '/musicplayer',
+        query: {
+          id: songId
+        }
+      }).catch(err => err)
     }
   },
 };

@@ -16,8 +16,8 @@ export default {
 .nav-bar {
   display: flex;
   justify-content: space-around;
+  align-items: center;
   height: 44px;
-  line-height: 44px;
   font-size: 16px;
 
   position: fixed;
@@ -33,6 +33,7 @@ export default {
 
 .left div {
   display: flex;
+  align-items: center;
   justify-content: space-around;
 }
 </style>

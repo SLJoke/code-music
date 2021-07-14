@@ -46,8 +46,8 @@ export default {
 
 <style scoped>
 .active span {
-  height: 39px;
   color: #d32f32;
+  padding-bottom: 6px;
   border-bottom: 2px solid #d32f32;
   font-size: 19px;
 }
