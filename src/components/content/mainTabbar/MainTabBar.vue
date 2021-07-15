@@ -20,7 +20,7 @@
 <script>
 import TabBar from "../../common/tabbar/TabBar"
 import TabBarItem from "../../common/tabbar/TabBarItem"
-import MusicPlayer from "pages/musicplayer/MusicPlayer";
+import MusicPlayer from "views/musicplayer/MusicPlayer";
 
 export default {
   name: "MainTabBar",
