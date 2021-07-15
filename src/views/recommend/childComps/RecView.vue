@@ -30,6 +30,7 @@ export default {
   align-items: center;
   font-size: 12px;
 }
+
 .recs div {
   height: 100%;
   display: flex;
@@ -42,6 +43,6 @@ export default {
   height: 52px;
   width: 52px;
   border-radius: 15%;
-  vertical-align: middle;
+  margin-bottom: 5px;
 }
 </style>

@@ -8,7 +8,7 @@ module.exports = {
             alias: {
                 'assets': '@/assets',
                 'components': '@/components',
-                'pages': '@/pages',
+                'views': '@/views',
                 'network': '@/network'
             }
         }

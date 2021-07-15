@@ -40,10 +40,10 @@ export default {
     this.getHotSongSheet();
   },
   mounted() {
-    this.$bus.$on('hotItemImgLoad',() => {
+    this.$bus.$on('hotItemImgLoad', () => {
       this.$refs.scroll.refresh()
     })
-    this.$bus.$on('swiperImgLoad',() => {
+    this.$bus.$on('swiperImgLoad', () => {
       this.$refs.scroll.refresh()
     })
   },
@@ -73,7 +73,9 @@ export default {
           id: songId
         }
       }).catch(err => err)
-    }
+      //废弃代码
+      // this.$bus.$emit('songId',songId)
+    },
   },
 };
 </script>

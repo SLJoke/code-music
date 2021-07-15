@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <keep-alive exclude="Profile">
+    <keep-alive exclude="Profile,MusicPlayer">
       <router-view/>
     </keep-alive>
     <main-tab-bar v-if="isShow"/>

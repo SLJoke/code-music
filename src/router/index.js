@@ -3,13 +3,13 @@ import VueRouter from "vue-router"
 
 Vue.use(VueRouter)
 
-const Home = () => import('pages/home/Home')
-const Profile = () => import('pages/profile/Profile')
-const Recommend = () => import('pages/recommend/Recommend')
-const List = () => import('pages/list/List')
-const SongSheet = () => import('pages/songsheet/SongSheet')
-const Artist = () => import('pages/artist/Artist')
-const MusicPlayer = () => import('pages/musicplayer/MusicPlayer')
+const Home = () => import('views/home/Home')
+const Profile = () => import('views/profile/Profile')
+const Recommend = () => import('views/recommend/Recommend')
+const List = () => import('views/list/List')
+const SongSheet = () => import('views/songsheet/SongSheet')
+const Artist = () => import('views/artist/Artist')
+const MusicPlayer = () => import('views/musicplayer/MusicPlayer')
 
 const routes = [
     {
