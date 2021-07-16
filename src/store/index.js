@@ -7,11 +7,17 @@ const state = {
     /**
      * 全局播放状态
      */
-    isPlaying: false
+    isPlaying: false,
+    songId: ''
 }
 
-const store = new Vuex.store({
+const store = new Vuex.Store({
     state,
+    mutations: {
+        updateSongId(state,NewId) {
+            this.state.songId = NewId
+        }
+    }
 })
 
 export default store

@@ -9,7 +9,7 @@ const Recommend = () => import('views/recommend/Recommend')
 const List = () => import('views/list/List')
 const SongSheet = () => import('views/songsheet/SongSheet')
 const Artist = () => import('views/artist/Artist')
-const MusicPlayer = () => import('views/musicplayer/MusicPlayer')
+const MusicPlayer = () => import('components/content/player/Player')
 
 const routes = [
     {

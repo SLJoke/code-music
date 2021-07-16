@@ -7,7 +7,7 @@
     </TabBarItem>
     <div class="music-note">
       <img v-if="isShow" src="~assets/img/tabbar/music-note.svg">
-      <music-player v-else/>
+      <player v-else/>
     </div>
     <TabBarItem path="/profile">
       <img slot="item-icon" src="~assets/img/tabbar/profile.svg">
@@ -20,14 +20,14 @@
 <script>
 import TabBar from "../../common/tabbar/TabBar"
 import TabBarItem from "../../common/tabbar/TabBarItem"
-import MusicPlayer from "views/musicplayer/MusicPlayer";
+import Player from "../player/Player";
 
 export default {
   name: "MainTabBar",
-  components: {TabBar, TabBarItem, MusicPlayer},
-  data() {
-    return {
-      isShow: true
+  components: {TabBar, TabBarItem, Player},
+  computed: {
+    isShow() {
+      return this.$store.state.songId === ''
     }
   }
 }

@@ -29,7 +29,7 @@ export default {
       this.$bus.$emit('swiperImgLoad')
     },
     sItemClick(id) {
-      this.$emit('swiperid',id)
+      this.$emit('swiperid', id)
     }
   }
 }

@@ -51,6 +51,7 @@ export default {
     getHomeBanner() {
       getHomeBanner().then(res => {
             this.banners = res.banners;
+            console.log(this.banners)
           }
       );
     },
@@ -67,14 +68,14 @@ export default {
     },
     //获取子组件传过来的歌曲id后再发送网络请求，请求歌曲的url
     getMusic(songId) {
-      this.$router.push({
-        path: '/musicplayer',
-        query: {
-          id: songId
-        }
-      }).catch(err => err)
+      // this.$router.push({
+      //   path: '/musicplayer',
+      //   query: {
+      //     id: songId
+      //   }
+      // }).catch(err => err)
       //废弃代码
-      // this.$bus.$emit('songId',songId)
+      this.$store.commit('updateSongId', songId)
     },
   },
 };
