@@ -2,8 +2,8 @@ import axios from "axios"
 
 export function request(config) {
     const instance = axios.create({
-        baseURL: 'http://localhost:3000/',
-        // baseURL: 'https://www.zznw.xyz/',
+        // baseURL: 'http://localhost:3000/',
+        baseURL: 'https://www.zznw.xyz/',
         timeout: 5000
     })
 
