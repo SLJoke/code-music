@@ -15,10 +15,10 @@
     </div>
 
     <div v-else class="mini-player" @click="fullScreen">
-      <img :src="picUrl">
+      <img v-lazy="picUrl + '?param=100y100'">
     </div>
 
-    <audio ref="audio" :src="songUrl" :autoplay="autoplay" :controls="ctrl"></audio>
+    <audio ref="audio" :src="songUrl" :autoplay="autoplay" :controls="ctrl" loop></audio>
   </div>
 
 </template>
@@ -56,7 +56,7 @@ export default {
   },
   computed: {
     bgImg() {
-      return {background: 'url(' + this.picUrl + ')' + 'center', filter: 'blur(40px)'}
+      return {background: 'url(' + this.picUrl+ '?param=200y200' + ')' + 'center', filter: 'blur(40px)'}
     },
     /**
      * * 判断是否全屏

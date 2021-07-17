@@ -1,4 +1,4 @@
-# new-music
+# code-music
 
 ## Project setup
 ```

@@ -7,7 +7,8 @@
     </slot>
     <div class="indicator">
       <slot name="indicator" v-if="showIndicator && slideCount>1">
-        <div v-for="(item, index) in slideCount" class="indi-item" :class="{active: index === currentIndex-1}" :key="index"></div>
+        <div v-for="(item, index) in slideCount" class="indi-item" :class="{active: index === currentIndex-1}"
+             :key="index"></div>
       </slot>
     </div>
   </div>
@@ -45,12 +46,14 @@ export default {
   },
   mounted: function () {
     // 1.操作DOM, 在前后添加Slide
-    setTimeout(() => {
-      this.handleDom();
+    this.$nextTick(() => {
+      setTimeout(() => {
+        this.handleDom();
 
-      // 2.开启定时器
-      this.startTimer();
-    }, 3000)
+        // 2.开启定时器
+        this.startTimer();
+      }, 3000)
+    })
   },
   methods: {
     /**
@@ -74,7 +77,7 @@ export default {
       this.scrolling = true;
 
       // 1.开始滚动动画
-      this.swiperStyle.transition ='transform '+ this.animDuration + 'ms';
+      this.swiperStyle.transition = 'transform ' + this.animDuration + 'ms';
       this.setTransform(currentPosition);
 
       // 2.判断滚动到的位置
@@ -100,7 +103,7 @@ export default {
         }
 
         // 2.结束移动后的回调
-        this.$emit('transitionEnd', this.currentIndex-1);
+        this.$emit('transitionEnd', this.currentIndex - 1);
       }, this.animDuration)
     },
 
@@ -234,7 +237,7 @@ export default {
   width: 8px;
   height: 3px;
   border-radius: 20%;
-  background-color: rgb(150,200,200,.3);
+  background-color: rgb(150, 200, 200, .3);
   line-height: 8px;
   text-align: center;
   font-size: 12px;

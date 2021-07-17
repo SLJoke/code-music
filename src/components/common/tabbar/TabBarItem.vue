@@ -21,7 +21,7 @@ export default {
   },
   computed: {
     tabBarIsActive() {
-      return this.$route.path.indexOf(this.path) != -1
+      return this.$route.path.indexOf(this.path) !== -1
     },
     tabBarIsActiveColor() {
       return {color: this.tabBarIsActive? this.activeColor: ''}

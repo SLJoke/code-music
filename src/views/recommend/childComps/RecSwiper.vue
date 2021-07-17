@@ -4,7 +4,7 @@
         v-for="item in banners"
         :key="item.bannerId"
         @click.native="sItemClick(item.targetId)">
-      <img :src="item.pic" @load="imgLoad"/>
+      <img :src="item.pic+'?param=200y100'" @load="imgLoad"/>
     </swiper-item>
   </swiper>
 </template>
@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     imgLoad() {
-      this.$bus.$emit('swiperImgLoad')
+      this.$emit('swiperImgLoad')
     },
     sItemClick(id) {
       this.$emit('swiperid', id)

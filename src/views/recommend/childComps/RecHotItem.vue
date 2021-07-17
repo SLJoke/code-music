@@ -1,18 +1,12 @@
 <template>
-  <div class="">
-    <div class="recommend-hot-bar">
-      <img src="~assets/img/recommend/hot.svg"/>
-      <span>{{ title }}</span>
-    </div>
-    <div class="recommend-hot-content">
-      <div class="hot-item"
-           v-for="item in hots"
-           :key="item.id"
-           @click="songClick(item.id)"
-      >
-        <img :src="item.picUrl" @load="imgLoad">
-        <span>{{ item.name }}</span>
-      </div>
+  <div class="recommend-hot-content">
+    <div class="hot-item"
+         v-for="item in hots"
+         :key="item.id"
+         @click="songClick(item.id)"
+    >
+      <img v-lazy="item.picUrl+'?param=100y100'" alt="" @load="imgLoad">
+      <span>{{ item.name }}</span>
     </div>
   </div>
 </template>
@@ -26,46 +20,25 @@ export default {
       default() {
         return []
       }
-    },
-    title: {
-      type: String,
-      default: ''
     }
   },
   methods: {
     imgLoad() {
-      this.$bus.$emit('hotItemImgLoad')
+      this.$emit('hotItemImgLoad')
     },
     songClick(id) {
-      this.$emit('songid',id)
+      this.$emit('songid', id)
     }
   }
 }
 </script>
 
-<style>
-.recommend-hot-bar {
-  height: 30px;
-  line-height: 30px;
-  font-size: 15px;
-  display: flex;
-  padding-left: 8px;
-}
-
-.recommend-hot-bar img {
-  height: 22px;
-}
-
-.recommend-hot-content {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 10px;
-}
-
+<style scoped>
 .hot-item {
-  flex: 0 1 33%;
+  flex: 0 1 29%;
   height: 110px;
+  margin-left: 15px;
+
   display: flex;
   flex-direction: column;
   align-items: center;

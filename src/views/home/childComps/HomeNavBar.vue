@@ -3,9 +3,9 @@
     <div slot="left">
       <div v-for="(item,index) in titles"
            :key="item"
-           :class="{active: currentIndex == index}"
+           :class="{active: currentIndex === index}"
            @click="navClick(index)">
-        <span>{{item}}</span>
+        <span>{{ item }}</span>
       </div>
     </div>
     <div slot="right">搜索</div>
@@ -25,9 +25,11 @@ export default {
         return []
       }
     },
-    path: Array,
-    default() {
-      return []
+    path: {
+      type: Array,
+      default() {
+        return []
+      }
     }
   },
   data() {
