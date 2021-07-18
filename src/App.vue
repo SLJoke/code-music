@@ -3,7 +3,7 @@
     <keep-alive exclude="Profile,MusicPlayer">
       <router-view/>
     </keep-alive>
-    <main-tab-bar v-if="isShow"/>
+    <main-tab-bar v-show="isShow"/>
   </div>
 </template>
 
@@ -15,7 +15,7 @@ export default {
   components: {MainTabBar},
   computed: {
     isShow() {
-      return this.$route.path != '/musicplayer'
+      return this.$route.path !== '/search'
     }
   }
 }

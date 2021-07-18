@@ -38,6 +38,8 @@ import RecView from "./childComps/RecView";
 import RecHot from "./childComps/RecHot";
 import RecHotItem from "./childComps/RecHotItem";
 
+import {mapMutations} from "vuex"
+
 import {
   getHomeBanner,
   getHotMusic,
@@ -69,23 +71,26 @@ export default {
      * @type {(function(...[*]=): void)|*}
      */
     this.refresh1 = this.debounce(this.$refs.scroll.refresh, 1000)
-    this.refresh2 = this.debounce(this.$refs.itemscroll.refresh,1000)
+    this.refresh2 = this.debounce(this.$refs.itemscroll.refresh, 1000)
   },
   methods: {
+    /**
+     * vuex mutations辅助函数
+     */
+    ...mapMutations(['updateSongId','updateIsPlaying']),
+
     /**
      * 封装网络请求方法
      */
     getHomeBanner() {
       getHomeBanner().then(res => {
-            this.banners = res.banners
-          }
-      )
+        this.banners = res.banners
+      })
     },
     getHotMusic() {
       getHotMusic().then(res => {
-            this.recommendMusic = res.result
-          }
-      )
+        this.recommendMusic = res.result
+      })
     },
     getHotSongSheet() {
       getHotSongSheet().then(res => {
@@ -97,7 +102,8 @@ export default {
      * 将子组件传过来的歌曲id同步给vuex
      */
     getMusic(songId) {
-      this.$store.commit('updateSongId', songId)
+      this.updateSongId(songId)
+      this.updateIsPlaying('true')
     },
 
     /**

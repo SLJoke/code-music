@@ -19,6 +19,6 @@ export default {
 
 .slide img {
   width: 100%;
-  border-radius: 3%;
+  border-radius: 10px;
 }
 </style>

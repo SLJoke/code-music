@@ -4,7 +4,7 @@
         v-for="item in banners"
         :key="item.bannerId"
         @click.native="sItemClick(item.targetId)">
-      <img :src="item.pic+'?param=200y100'" @load="imgLoad"/>
+      <img :src="item.pic+'?param=400y200'" @load="imgLoad"/>
     </swiper-item>
   </swiper>
 </template>

@@ -9,7 +9,7 @@ const Recommend = () => import('views/recommend/Recommend')
 const List = () => import('views/list/List')
 const SongSheet = () => import('views/songsheet/SongSheet')
 const Artist = () => import('views/artist/Artist')
-const MusicPlayer = () => import('components/content/player/Player')
+const Search = () => import('views/search/Search')
 
 const routes = [
     {
@@ -39,16 +39,16 @@ const routes = [
             {
                 path: 'artist',
                 component: Artist
+            },
+            {
+                path: '/search',
+                component: Search
             }
         ]
     },
     {
         path: '/profile',
         component: Profile
-    },
-    {
-        path: '/musicplayer',
-        component: MusicPlayer
     }
 ]
 
