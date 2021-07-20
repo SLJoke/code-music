@@ -17,13 +17,19 @@
         </div>
       </nav-bar>
       <div class="player-content">
-        <img :src="picUrl">
+        <div class="record-wrap" :style="isRotate">
+          <div class="record">
+            <img :src="picUrl">
+          </div>
+        </div>
       </div>
       <div class="player-timer">
         <span>{{ formatCurrentTime }}</span>
         <input
             id="range"
             class="progress-bar"
+            :style="{background: `-webkit-linear-gradient(top, #f1f1f1, #f1f1f1)
+            0% 0% / ${currentTime * 1000 / duration * 100}% 100% no-repeat`}"
             type="range"
             :value="currentTime"
             :max="duration / 1000"
@@ -35,7 +41,7 @@
         <div class="previous">
           <img src="~assets/img/player/previous.svg"/>
         </div>
-        <div class="play-pause" >
+        <div class="play-pause">
           <img
               v-show="isPlaying"
               src="~assets/img/player/pause.svg"
@@ -65,6 +71,7 @@
         :autoplay="autoplay"
         :controls="ctrl"
         @timeupdate="getCurrentTime"
+        @playing="playState"
         loop></audio>
   </div>
 
@@ -75,7 +82,7 @@ import NavBar from "components/common/navbar/NavBar";
 
 import {getMusicUrl, getMusicDetail} from "network/player"
 
-import {mapState,mapMutations} from "vuex"
+import {mapState, mapMutations} from "vuex"
 
 export default {
   name: "Player",
@@ -107,7 +114,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['songId','isPlaying']),
+    ...mapState(['songId', 'isPlaying']),
 
     /**
      * 给播放器动态添加背景
@@ -120,7 +127,7 @@ export default {
       }
     },
     isRotate() {
-      return {animationPlayState: this.isPlaying? '': 'paused'}
+      return {animationPlayState: this.isPlaying ? '' : 'paused'}
     },
     /**
      * 格式化获取的总歌曲时长为 00:00 格式
@@ -166,9 +173,6 @@ export default {
   created() {
     this.getMusicUrl()
     this.getMusicDetail()
-  },
-  mounted() {
-
   },
   watch: {
     /**
@@ -230,16 +234,22 @@ export default {
       document.getElementById('audio').currentTime = document.getElementById('range').value
     },
 
+    playState() {
+      this.updateIsPlaying(true)
+    },
+
     goPrevious() {
 
     },
     goPlay() {
-      this.updateIsPlaying(true)
-      document.getElementById('audio').play()
+      const audio = document.getElementById('audio')
+      audio.play()
+      this.updateIsPlaying(!audio.paused)
     },
     goPaused() {
-      this.updateIsPlaying(false)
-      document.getElementById('audio').pause()
+      const audio = document.getElementById('audio')
+      audio.pause()
+      this.updateIsPlaying(!audio.paused)
     },
     goNext() {
 
@@ -296,15 +306,35 @@ export default {
   align-items: center;
 }
 
-.player-content img {
+.record-wrap {
+  width: 265px;
+  height: 265px;
+  border-radius: 50%;
+  background-color:  rgba(100, 100, 100, .2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: rot 50s linear infinite;
+}
+
+.record {
   width: 250px;
   height: 250px;
-  border-radius: 15%;
-  border: 1px solid #000;
+  border-radius: 50%;
+  background-color:  rgba(0, 0, 0, .9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.record img {
+  width: 243px;
+  height: 243px;
+  border-radius: 50%;
 }
 
 .player-timer {
-  color: #e8e1e1;
+  color: #f7f1f1;
   width: 100%;
   height: 25%;
   display: flex;
@@ -317,7 +347,7 @@ export default {
   width: 80%;
   margin: 0 2%;
   height: 3px;
-  background-color: rgba(200,200,200,.3);
+  background-color: rgb(158, 145, 145, .3) !important;
   /* 清除input range默认样式 */
   -webkit-appearance: none;
   border-radius: 10px;
@@ -333,11 +363,11 @@ export default {
 }
 
 /* 自定义控件样式 */
-/*.progress-bar::-webkit-slider-runnable-track {*/
-/*  height: 3px;*/
-/*  border-radius: 10px;*/
-/*  background-color: rgba(50,50,50,.7);*/
-/*}*/
+/* .progress-bar::-webkit-slider-runnable-track {
+  height: 3px;
+  border-radius: 10px;
+  background-color: rgba(50,50,50,.7);
+} */
 
 /* 原始的控件获取到焦点时，会显示包裹整个控件的边框，需要把边框取消 */
 /*.progress-bar:focus {*/
@@ -356,14 +386,14 @@ export default {
   align-items: center;
 }
 
-.previous img,.next img {
-  width: 50px;
-  height: 50px;
+.previous img, .next img {
+  width: 35px;
+  height: 35px;
 }
 
-.play-pause img{
-  width: 70px;
-  height: 70px;
+.play-pause img {
+  width: 40px;
+  height: 40px;
 }
 
 .left {

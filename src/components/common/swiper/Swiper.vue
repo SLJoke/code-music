@@ -236,7 +236,7 @@ export default {
   box-sizing: border-box;
   width: 8px;
   height: 3px;
-  border-radius: 20%;
+  border-radius: 20px;
   background-color: rgb(150, 200, 200, .3);
   line-height: 8px;
   text-align: center;
