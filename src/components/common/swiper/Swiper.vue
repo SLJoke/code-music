@@ -122,7 +122,7 @@ export default {
     handleDom: function () {
       // 1.获取要操作的元素
       let swiperEl = document.querySelector('.swiper');
-      let slidesEls = swiperEl.getElementsByClassName('slide');
+      let slidesEls = swiperEl.getElementsByClassName('mainSlide');
 
       // 2.保存个数
       this.slideCount = slidesEls.length;
@@ -169,7 +169,7 @@ export default {
       this.setTransform(moveDistance);
     },
 
-    touchEnd: function () {
+    touchEnd: function (e) {// eslint-disable-line
       // 1.获取移动的距离
       let currentMove = Math.abs(this.distance);
       // 2.判断最终的距离

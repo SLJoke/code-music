@@ -6,10 +6,10 @@
         :key="item.id"
         @click="searchSongId(item.id)"
     >
-      <img :src="item.al.picUrl + '?param=100y100'" @load="refresh">
+      <img v-lazy="item.al.picUrl + '?param=50y50'" @load="refresh">
       <div>
-        <div>{{item.name}}</div>
-        <div>{{item.ar[0].name}}</div>
+        <span class="song">{{item.name}}</span>
+        <span class="singer">---{{item.ar[0].name}}</span>
       </div>
     </div>
   </div>
@@ -26,16 +26,15 @@ export default {
       default() {
         return []
       }
-    },
-    refresh: {
-      type: Function,
-      default:function() {}
     }
   },
   methods: {
     ...mapMutations(['updateSongId']),
     searchSongId(id) {
       this.updateSongId(id)
+    },
+    refresh() {
+      this.$emit('refresh')
     }
   }
 }
@@ -47,15 +46,28 @@ export default {
 }
 
 .search-item {
-  width: 100%;
-  height: 80px;
+  height: 60px;
   display: flex;
-  margin: 10px 0;
-  background-color: rgba(0, 0, 0, .05);
+  border-bottom: 1px solid rgba(0, 0, 0, .15);
+  margin: 5%;
+  /* background-color: rgba(0, 0, 0, .05); */
 }
 
 .search-item img {
-  width: 70px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
+}
+
+.search-item div {
+  margin: 5px 0 0 10px;
+}
+
+.song {
+  font-size: 14px;
+}
+
+.singer {
+  font-size: 12px;
+  color: rgba(0, 0, 0, .45);
 }
 </style>

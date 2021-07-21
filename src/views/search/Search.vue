@@ -2,7 +2,7 @@
   <div id="search">
     <search-nav-bar :getSearchData="getSearchSong"/>
     <scroll ref="searchScroll" class="search-scroll">
-      <search-list :searchData="searchData" :refresh="searchImgLoad"/>
+      <search-list :searchData="searchData" @refresh="searchImgLoad"/>
     </scroll>
   </div>
 </template>
@@ -13,6 +13,8 @@ import SearchList from "./childComps/SearchList"
 
 import Scroll from "components/common/scroll/Scroll"
 
+import {debounce} from "common/utils"
+
 import {search} from "network/search"
 
 export default {
@@ -20,18 +22,21 @@ export default {
   components: {SearchNavBar, SearchList, Scroll},
   data() {
     return {
-      searchData: []
+      searchData: [],
+      searchRefresh: ''
     }
+  },
+  mounted() {
+    this.searchRefresh = debounce(this.$refs.searchScroll.refresh, 1000)
   },
   methods: {
     getSearchSong(keywords) {
       search(keywords).then(res => {
         this.searchData = res.result.songs
-        console.log(this.searchData)
       })
     },
     searchImgLoad() {
-      this.$refs.searchScroll.refresh()
+      this.searchRefresh()
     }
   }
 }

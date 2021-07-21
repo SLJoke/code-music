@@ -60,8 +60,8 @@
 
     </div>
 
-    <div v-else class="mini-player" :style="isRotate" @click="fullScreen">
-      <img v-lazy="picUrl + '?param=100y100'">
+    <div v-else class="mini-player" @click="fullScreen">
+      <img v-lazy="picUrl + '?param=100y100'" :style="isRotate">
     </div>
 
     <audio
@@ -199,7 +199,7 @@ export default {
         this.song = res.songs[0].al.name
         this.singer = res.songs[0].ar
         this.duration = res.songs[0].dt
-        this.picUrl = res.songs[0].al.picUrl + '?param=200y200'
+        this.picUrl = res.songs[0].al.picUrl + '?param=250y250'
       }).catch(() => console.log('请求不到该音乐，抱歉'))
     },
     goBack() {
@@ -334,6 +334,7 @@ export default {
 }
 
 .player-timer {
+  font-size: 12px;
   color: #f7f1f1;
   width: 100%;
   height: 25%;
@@ -419,15 +420,35 @@ export default {
   color: rgba(200, 200, 200, .6);
 }
 
-.mini-player, .mini-player img {
-  width: 56px;
-  height: 56px;
+.mini-player {
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
+
+  position: absolute;
+  bottom: 10%;
+  right: 4%;
+
+  background-color: rgba(20, 20, 20);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  box-shadow: 0 5px 10px rgba(100, 100, 100, 0.4);
 }
 
-.mini-player {
+.mini-player:active {
+  box-shadow: 0 8px 10px rgba(100, 100, 100, 0.8);
+}
+
+.mini-player img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
   animation: rot 16s linear infinite;
 }
+
 
 
 @keyframes rot {

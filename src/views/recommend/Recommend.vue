@@ -38,6 +38,7 @@ import RecView from "./childComps/RecView";
 import RecHot from "./childComps/RecHot";
 import RecHotItem from "./childComps/RecHotItem";
 
+import {debounce} from "common/utils"
 import {mapMutations} from "vuex"
 
 import {
@@ -70,8 +71,8 @@ export default {
      * 减少重新计算可滚动区域的次数
      * @type {(function(...[*]=): void)|*}
      */
-    this.refresh1 = this.debounce(this.$refs.scroll.refresh, 1000)
-    this.refresh2 = this.debounce(this.$refs.itemscroll.refresh, 1000)
+    this.refresh1 = debounce(this.$refs.scroll.refresh, 1000)
+    this.refresh2 = debounce(this.$refs.itemscroll.refresh, 1000)
   },
   methods: {
     /**
@@ -109,15 +110,15 @@ export default {
     /**
      * 防抖函数：让函数不频繁的执行
      */
-    debounce(func, delay) {
-      let timer = null
-      return function (...args) {
-        if (timer !== null) clearTimeout(timer)
-        timer = setTimeout(() => {
-          func.apply(this, args)
-        }, delay)
-      }
-    },
+    // debounce(func, delay) {
+    //   let timer = null
+    //   return function (...args) {
+    //     if (timer !== null) clearTimeout(timer)
+    //     timer = setTimeout(() => {
+    //       func.apply(this, args)
+    //     }, delay)
+    //   }
+    // },
 
     /**
      * 图片加载完后重新刷新计算可滚动高度

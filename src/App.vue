@@ -4,18 +4,23 @@
       <router-view/>
     </keep-alive>
     <main-tab-bar v-show="isShow"/>
+    <player v-show="isPlay"/>
   </div>
 </template>
 
 <script>
 import MainTabBar from "components/content/mainTabbar/MainTabBar"
+import Player from "components/content/player/Player"
 
 export default {
   name: 'App',
-  components: {MainTabBar},
+  components: {MainTabBar, Player},
   computed: {
     isShow() {
       return this.$route.path !== '/search'
+    },
+    isPlay(){
+      return this.$store.state.songId !== ''
     }
   }
 }

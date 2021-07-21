@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     goBack() {
-      this.$router.history.go(-1)
+      this.$router.go(-1)
     },
     goSearch() {
       if(this.keywords !== '') {
@@ -48,15 +48,14 @@ input[type='text'] {
   height: 25px;
   border: none;
   border-radius: 10px;
-  border: 1px solid #d32f32;
+  border: 1px solid #e69091;
   outline: none;
   text-indent: 5%;
   font-size: 13px;
 }
 
 input[type='text']:focus {
-  /* border: none; */
-  /* background-color: #d32f32; */
+  border: 1px solid #d32f32;
 }
 
 input[type='text']::-webkit-input-placeholder {

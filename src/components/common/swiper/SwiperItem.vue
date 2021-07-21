@@ -1,5 +1,5 @@
 <template>
-  <div class="slide">
+  <div class="mainSlide">
     <slot></slot>
   </div>
 </template>
@@ -11,13 +11,13 @@ export default {
 </script>
 
 <style scoped>
-.slide {
+.mainSlide {
   width: 94%;
   margin: 3%;
   flex-shrink: 0;
 }
 
-.slide img {
+.mainSlide img {
   width: 100%;
   border-radius: 10px;
 }

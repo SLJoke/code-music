@@ -8,7 +8,7 @@
       <img src="~assets/img/recommend/fav.svg">
       <span>我的喜欢</span>
     </div>
-    <div class="search">
+    <div class="search" @click="goSearch">
       <img src="~assets/img/recommend/search.svg">
       <span>音乐搜索</span>
     </div>
@@ -17,7 +17,12 @@
 
 <script>
 export default {
-  name: "RecView"
+  name: "RecView",
+  methods: {
+    goSearch() {
+      this.$router.push('/search')
+    }
+  }
 }
 </script>
 
