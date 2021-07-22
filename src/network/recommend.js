@@ -22,7 +22,7 @@ export function getHotSongSheet() {
     return request({
         url: '/personalized',
         params: {
-            limit: 6
+            limit: 30
         }
     })
 }

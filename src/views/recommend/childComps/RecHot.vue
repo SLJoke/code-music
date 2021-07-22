@@ -22,6 +22,7 @@ export default {
 
 <style scoped>
 .recommend-hot {
+  width: 100%;
   margin-top: 10px;
 }
 

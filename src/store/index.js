@@ -1,6 +1,8 @@
 import Vue from "vue"
 import Vuex from "vuex"
 
+import mutations from "./mutations"
+
 Vue.use(Vuex)
 
 const state = {
@@ -13,14 +15,7 @@ const state = {
 
 const store = new Vuex.Store({
     state,
-    mutations: {
-        updateSongId(state,NewId) {
-            this.state.songId = NewId
-        },
-        updateIsPlaying(state,NewStatus) {
-            this.state.isPlaying = NewStatus
-        }
-    }
+    mutations
 })
 
 export default store
