@@ -10,6 +10,7 @@ const List = () => import('views/list/List')
 const SongSheet = () => import('views/songsheet/SongSheet')
 const Artist = () => import('views/artist/Artist')
 const Search = () => import('views/search/Search')
+const Detail = () => import('views/detail/Detail')
 
 const routes = [
     {
@@ -43,6 +44,10 @@ const routes = [
             {
                 path: '/search',
                 component: Search
+            },
+            {
+                path: '/playlist/detail',
+                component: Detail
             }
         ]
     },

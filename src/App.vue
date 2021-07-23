@@ -17,7 +17,9 @@ export default {
   components: {MainTabBar, Player},
   computed: {
     isShow() {
-      return this.$route.path !== '/search'
+      if(this.$route.path === '/search') return false
+      else if(this.$route.path.indexOf('/playlist/detail') !== -1) return false
+      else return true
     },
     isPlay(){
       return this.$store.state.songId !== ''

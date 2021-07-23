@@ -24,7 +24,7 @@
         </scroll>
       </rec-hot>
       <rec-hot :title="'热门榜单'">
-        <rec-hot-item class="hot-list" :hots="hotSongSheet"/>
+        <rec-hot-item class="hot-list" :hots="hotSongSheet" @songid="goToDetail"/>
       </rec-hot>
     </div>
   </scroll>
@@ -104,21 +104,16 @@ export default {
      */
     getMusic(songId) {
       this.updateSongId(songId)
-      this.updateIsPlaying('true')
     },
 
-    /**
-     * 防抖函数：让函数不频繁的执行
-     */
-    // debounce(func, delay) {
-    //   let timer = null
-    //   return function (...args) {
-    //     if (timer !== null) clearTimeout(timer)
-    //     timer = setTimeout(() => {
-    //       func.apply(this, args)
-    //     }, delay)
-    //   }
-    // },
+    goToDetail(id) {
+      this.$router.push({
+        path: '/playlist/detail',
+        query: {
+          id: id
+        }
+      })
+    },
 
     /**
      * 图片加载完后重新刷新计算可滚动高度
