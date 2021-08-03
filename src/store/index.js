@@ -10,7 +10,8 @@ const state = {
      * 全局播放状态
      */
     isPlaying: false,
-    songId: ''
+    songId: '',
+    myFav: []
 }
 
 const store = new Vuex.Store({

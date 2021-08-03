@@ -11,6 +11,7 @@ const SongSheet = () => import('views/songsheet/SongSheet')
 const Artist = () => import('views/artist/Artist')
 const Search = () => import('views/search/Search')
 const Detail = () => import('views/detail/Detail')
+const Fav =() => import('views/fav/Fav')
 
 const routes = [
     {
@@ -20,6 +21,9 @@ const routes = [
     {
         path: '/home',
         component: Home,
+        meta: {
+            isShow: true
+        },
         children: [
             {
                 path: '',
@@ -27,33 +31,61 @@ const routes = [
             },
             {
                 path: 'recommend',
-                component: Recommend
+                component: Recommend,
+                meta: {
+                    isShow: true
+                }
             },
             {
                 path: 'list',
-                component: List
+                component: List,
+                meta: {
+                    isShow: true
+                }
             },
             {
                 path: 'songsheet',
-                component: SongSheet
+                component: SongSheet,
+                meta: {
+                    isShow: true
+                }
             },
             {
                 path: 'artist',
-                component: Artist
+                component: Artist,
+                meta: {
+                    isShow: true
+                }
             },
             {
                 path: '/search',
-                component: Search
+                component: Search,
+                meta: {
+                    isShow: false
+                }
+            },
+            {
+                path: '/fav',
+                component: Fav,
+                meta: {
+                    isShow: false
+                }
             },
             {
                 path: '/playlist/detail',
-                component: Detail
+                component: Detail,
+                meta: {
+                    isShow: false
+                }
             }
         ]
     },
     {
         path: '/profile',
-        component: Profile
+        component: Profile,
+        meta: {
+            isShow: true
+        }
     }
 ]
 

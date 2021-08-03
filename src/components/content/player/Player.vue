@@ -12,8 +12,9 @@
             <span class="singer" v-for="item in singer" :key="item.id">{{ item.name + " " }}</span>
           </div>
         </div>
-        <div slot="right" class="right" @click="incFav">
-          <img src="~assets/img/player/fav.svg">
+        <div slot="right" class="right">
+          <img v-if="isFav" @click="decFav" src="~assets/img/player/fav-active.svg">
+          <img v-else @click="incFav" src="~assets/img/player/fav.svg">
         </div>
       </nav-bar>
       <div class="player-content">
@@ -114,7 +115,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['songId', 'isPlaying']),
+    ...mapState(['songId', 'isPlaying','myFav']),
 
     /**
      * 给播放器动态添加背景
@@ -128,6 +129,14 @@ export default {
     },
     isRotate() {
       return {animationPlayState: this.isPlaying ? '' : 'paused'}
+    },
+
+    isFav() {
+      let id = []
+      for(let i in this.myFav) {
+        id.push(this.myFav[i].id)
+      }
+      return id.indexOf(this.songId) !== -1
     },
     /**
      * 格式化获取的总歌曲时长为 00:00 格式
@@ -184,7 +193,7 @@ export default {
     }
   },
   methods: {
-    ...mapMutations(['updateIsPlaying']),
+    ...mapMutations(['updateIsPlaying','incMyFav','decMyFav']),
     /**
      * 封装网络请求为方法
      */
@@ -214,6 +223,21 @@ export default {
      */
     incFav() {
       console.log('歌曲添加到了我的喜欢')
+      this.incMyFav({
+        'id': this.songId,
+        'song': this.song,
+        'singer': this.singer[0].name
+      })
+      console.log(this.$store.state.myFav)
+    },
+    decFav() {
+      let index = 0
+      for(let i in this.myFav) {
+        if(this.myFav[i].id === this.songId) index = i
+      }
+      console.log('歌曲移出了我的喜欢')
+      this.decMyFav(index)
+      console.log(this.$store.state.myFav)
     },
 
     /**

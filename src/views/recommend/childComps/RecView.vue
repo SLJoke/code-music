@@ -4,7 +4,7 @@
       <img src="~assets/img/recommend/day-rec.svg">
       <span>每日推荐</span>
     </div>
-    <div class="fav">
+    <div class="fav" @click="goFav">
       <img src="~assets/img/recommend/fav.svg">
       <span>我的喜欢</span>
     </div>
@@ -19,6 +19,9 @@
 export default {
   name: "RecView",
   methods: {
+    goFav() {
+      this.$router.push('/fav')
+    },
     goSearch() {
       this.$router.push('/search')
     }

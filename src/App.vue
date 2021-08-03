@@ -3,8 +3,8 @@
     <keep-alive exclude="Profile">
       <router-view/>
     </keep-alive>
-    <main-tab-bar v-show="isShow"/>
-    <player v-show="isPlay"/>
+    <main-tab-bar v-if="$route.meta.isShow"/>
+    <player v-if="isPlay"/>
   </div>
 </template>
 
@@ -16,11 +16,6 @@ export default {
   name: 'App',
   components: {MainTabBar, Player},
   computed: {
-    isShow() {
-      if(this.$route.path === '/search') return false
-      else if(this.$route.path.indexOf('/playlist/detail') !== -1) return false
-      else return true
-    },
     isPlay(){
       return this.$store.state.songId !== ''
     }
