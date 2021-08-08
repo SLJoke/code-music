@@ -48,7 +48,7 @@ export default {
 .search-item {
   height: 60px;
   display: flex;
-  border-bottom: 1px solid rgba(0, 0, 0, .15);
+  border-bottom: 1px solid #d32f32;
   margin: 5%;
   /* background-color: rgba(0, 0, 0, .05); */
 }
