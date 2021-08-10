@@ -9,7 +9,7 @@
         <div slot="center" class="center">
           <span class="song">{{ song }}</span>
           <div class="singer-wrap">
-            <span class="singer" v-for="item in singer" :key="item.id">{{ item.name + " " }}</span>
+            <span class="singer">{{ formatSinger }}</span>
           </div>
         </div>
         <div slot="right" class="right">
@@ -131,6 +131,14 @@ export default {
       return {animationPlayState: this.isPlaying ? '' : 'paused'}
     },
 
+    formatSinger() {
+      let arr = []
+      for(let i in this.singer) {
+        arr.push(this.singer[i].name)
+      }
+      return arr.join(' / ')
+    },
+
     isFav() {
       let id = []
       for(let i in this.myFav) {
@@ -228,16 +236,13 @@ export default {
         'song': this.song,
         'singer': this.singer[0].name
       })
-      console.log(this.$store.state.myFav)
     },
     decFav() {
       let index = 0
       for(let i in this.myFav) {
         if(this.myFav[i].id === this.songId) index = i
       }
-      console.log('歌曲移出了我的喜欢')
       this.decMyFav(index)
-      console.log(this.$store.state.myFav)
     },
 
     /**
@@ -278,17 +283,6 @@ export default {
     goNext() {
 
     }
-    //操作歌手栏的dom，若歌手大于一个给它增加间隔符，未实现，待定
-    // handleDom() {
-    //   let singerEl = document.querySelector('.singer-wrap')
-    //   let singerEls = singerEl.getElementsByClassName('singer')
-    //   console.log(singerEl,singerEls)
-    //   if(this.singer.length > 1) {
-    //     for(let i = 0; i < this.singer.length; i++) {
-    //       singerEls.insertBefore(<span>/</span>,singerEls.childNodes[i++])
-    //     }
-    //   }
-    // }
   }
 }
 </script>

@@ -1,5 +1,7 @@
 # code-music
 
+## 小白养成之路
+
 ## Project setup
 ```
 npm install

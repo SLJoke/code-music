@@ -6,9 +6,9 @@
       <span slot="item-text">音乐圈</span>
     </TabBarItem>
     <TabBarItem path="/profile">
-      <img slot="item-icon" src="~assets/img/tabbar/profile.svg">
-      <img slot="item-icon-active" src="~assets/img/tabbar/profile-active.svg">
-      <span slot="item-text">我的</span>
+      <img slot="item-icon" src="~assets/img/tabbar/about.svg">
+      <img slot="item-icon-active" src="~assets/img/tabbar/about-active.svg">
+      <span slot="item-text">关于</span>
     </TabBarItem>
   </TabBar>
 </template>
