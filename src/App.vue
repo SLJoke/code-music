@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <keep-alive exclude="Profile">
+    <keep-alive>
       <router-view/>
     </keep-alive>
     <main-tab-bar v-if="$route.meta.isShow"/>

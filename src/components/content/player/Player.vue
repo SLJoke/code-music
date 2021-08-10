@@ -1,6 +1,7 @@
 <template>
   <div class="music-player">
     <div v-if="isFull" class="full-player">
+      <div class="cover"></div>
       <div class="bg" :style="bgImg"></div>
       <nav-bar>
         <div slot="left" class="left" @click="goBack">
@@ -17,8 +18,13 @@
           <img v-else @click="incFav" src="~assets/img/player/fav.svg">
         </div>
       </nav-bar>
-      <div class="player-content">
-        <div class="record-wrap" :style="isRotate">
+      <div class="player-content" @click="lyrClick">
+        <div v-if="isLyric" class="lyric">
+          <p v-for="(item,index) in formatLyric" :key="index">
+            {{item}}
+          </p>
+        </div>
+        <div v-else class="record-wrap" :style="isRotate">
           <div class="record">
             <img :src="picUrl">
           </div>
@@ -81,7 +87,11 @@
 <script>
 import NavBar from "components/common/navbar/NavBar";
 
-import {getMusicUrl, getMusicDetail} from "network/player"
+import {
+  getMusicUrl,
+  getMusicDetail,
+  getMusicLyric
+  } from "network/player"
 
 import {mapState, mapMutations} from "vuex"
 
@@ -111,7 +121,9 @@ export default {
       currentTime: 0,
       singer: [],
       songDetail: [],
-      isFull: false
+      lyric: '',
+      isFull: false,
+      isLyric: false
     }
   },
   computed: {
@@ -137,6 +149,12 @@ export default {
         arr.push(this.singer[i].name)
       }
       return arr.join(' / ')
+    },
+
+    formatLyric() {
+      const lyrArr = this.lyric.replace(/\[\d*:\d*.\d*\]/g, '')
+      const lyr = lyrArr.split('\n')
+      return lyr
     },
 
     isFav() {
@@ -190,6 +208,7 @@ export default {
   created() {
     this.getMusicUrl()
     this.getMusicDetail()
+    this.getMusicLyric()
   },
   watch: {
     /**
@@ -198,6 +217,7 @@ export default {
     'songId'() {
       this.getMusicUrl()
       this.getMusicDetail()
+      this.getMusicLyric()
     }
   },
   methods: {
@@ -219,11 +239,19 @@ export default {
         this.picUrl = res.songs[0].al.picUrl + '?param=250y250'
       }).catch(() => console.log('请求不到该音乐，抱歉'))
     },
+    getMusicLyric() {
+      getMusicLyric(this.songId).then(res => {
+        this.lyric = res.lrc.lyric
+      })
+    },
     goBack() {
       this.isFull = false
     },
     fullScreen() {
       this.isFull = true
+    },
+    lyrClick() {
+      this.isLyric = !this.isLyric
     },
 
     /**
@@ -305,6 +333,14 @@ export default {
   left: 0;
 }
 
+.cover {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(0, 0, 0, .2);
+  z-index: -5;
+}
+
 .bg {
   width: 100%;
   height: 100%;
@@ -322,6 +358,18 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-y: scroll;
+}
+
+.lyric {
+  height: 100%;
+  color: #d6d2d2;
+  font-size: 16px;
+  text-align: center;
+}
+
+.lyric p {
+  margin: 10px 0;
 }
 
 .record-wrap {
@@ -410,9 +458,13 @@ export default {
   height: 35px;
 }
 
+.play-pause {
+  margin: 0 40px;
+}
+
 .play-pause img {
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
 }
 
 .left {

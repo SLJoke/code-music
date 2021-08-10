@@ -22,7 +22,7 @@ const WORDS = [
   'DO NOT CLICK PLESE',
   'THIS IS GOOD DAY',
   'IT IS SO GOOD',
-  'oh my god you are so beautiy girl',
+  'OH MY GOD YOU ARE SO BEAUTIY GIRL',
   'OH FUCK IT',
   'SHIT',
   'CLICK ME PLESE',
