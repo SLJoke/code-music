@@ -4,7 +4,7 @@ export function request(config) {
     const instance = axios.create({
         // baseURL: 'http://localhost:3000/',
 //         baseURL: 'https://xx-music-api.vercel.app',
-        baseUrl: 'http://cloud-music.pl-fe.cn/',
+        baseURL: 'http://cloud-music.pl-fe.cn/',
         timeout: 5000
     })
 
