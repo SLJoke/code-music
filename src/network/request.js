@@ -3,7 +3,7 @@ import axios from "axios"
 export function request(config) {
     const instance = axios.create({
         // baseURL: 'http://localhost:3000/',
-        baseURL: 'https://api.jinlx.cc/',
+        baseURL: 'http://150.158.44.141:3000',
         timeout: 5000
     })
 
