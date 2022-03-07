@@ -1,6 +1,6 @@
 # code-music
 
-## 小白养成之路
+## come on
 
 ## Project setup
 ```
