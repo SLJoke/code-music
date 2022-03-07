@@ -3,8 +3,7 @@ import axios from "axios"
 export function request(config) {
     const instance = axios.create({
         // baseURL: 'http://localhost:3000/',
-//         baseURL: 'https://xx-music-api.vercel.app',
-        baseURL: 'http://cloud-music.pl-fe.cn/',
+        baseURL: 'https://xx-music-api.vercel.app',
         timeout: 5000
     })
 
