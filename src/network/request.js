@@ -3,8 +3,10 @@ import axios from "axios"
 export function request(config) {
     const instance = axios.create({
         // baseURL: 'http://localhost:3000/',
+        // 部署在vercel上的接口需要额外添加一个参数realIP
         baseURL: 'https://xx-music-api.vercel.app',
-        timeout: 5000
+        params: { realIP: '182.139.156.200' },
+        timeout: 10000
     })
 
     //请求拦截
